@@ -30,7 +30,8 @@ setup(
     maintainer = 'Joe LeVeque',
     maintainer_email = 'jolevequ@microsoft.com',
     packages = [
-        'host_modules'
+        'host_modules',
+	'utils',
     ],
     scripts = [
         'scripts/caclmgrd',
@@ -48,6 +49,7 @@ setup(
         'systemd-python',
         'Jinja2>=2.10',
         'PyGObject',
+        'pycairo==1.26.1',
         'psutil'
     ] + sonic_dependencies,
     setup_requires = [
@@ -59,7 +61,7 @@ setup(
         'pytest',
         'pyfakefs',
         'sonic-py-common',
-        'deepdiff==6.2.2',
+        'deepdiff>=6.2.2',
         'psutil'
     ],
     extras_require = {
@@ -68,7 +70,7 @@ setup(
             'pytest',
             'pyfakefs',
             'sonic-py-common',
-            'deepdiff==6.2.2'
+            'deepdiff>=6.2.2'
         ]
     },
     classifiers = [

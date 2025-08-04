@@ -16,6 +16,12 @@ class MockConnector(object):
             MockConnector.data[key] = {}
         MockConnector.data[key][field] = value
 
+    def hmset(self, db_id, key, fvs):
+        if key not in MockConnector.data:
+            MockConnector.data[key] = {}
+        for field, value in fvs.items():
+            MockConnector.data[key][field] = value
+
     def keys(self, db_id, pattern):
         match = pattern.split('*')[0]
         ret = []
@@ -29,7 +35,7 @@ class MockConnector(object):
         return MockConnector.data[key]
 
     def delete(self, db_id, key):
-        return MockConnector.data.delete(key)
+        return MockConnector.data.pop(key, None)
 
     def delete_all_by_pattern(self, db_id, pattern):
         keys = self.keys(db_id, pattern)
